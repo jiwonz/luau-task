@@ -1,0 +1,19 @@
+name = "jiwonz/task"
+version = "0.1.0"
+description = "Get the task library for Roblox or Lune or Luau"
+authors = ["jiwonz <me@jiwonz.kr>", "jackdotink"]
+repository = "https://github.com/jiwonz/luau-task"
+license = "MIT"
+
+[target]
+environment = "luau"
+lib = "src/lib/init.luau"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[dev_dependencies]
+luau_lsp = { name = "pesde/luau_lsp", version = "^1.38.1", target = "lune" }
+selene = { name = "pesde/selene", version = "^0.27.1", target = "lune" }
+stylua = { name = "pesde/stylua", version = "^2.0.2", target = "lune" }
+luau_check = { name = "jiwonz/luau_check", version = "^0.2.2", target = "lune" }
