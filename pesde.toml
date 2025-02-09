@@ -5,6 +5,7 @@ authors = ["jiwonz <me@jiwonz.kr>", "jackdotink"]
 repository = "https://github.com/jiwonz/luau-task"
 license = "MIT"
 private = true
+includes = ["src/**", "pesde.toml", "LICENSE", "README.md"]
 
 [target]
 environment = "luau"
