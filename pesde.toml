@@ -4,6 +4,7 @@ description = "Get the task library for Roblox or Lune or Luau"
 authors = ["jiwonz <me@jiwonz.kr>", "jackdotink"]
 repository = "https://github.com/jiwonz/luau-task"
 license = "MIT"
+private = true
 
 [target]
 environment = "luau"
@@ -17,5 +18,5 @@ build = "scripts/build.luau"
 
 [dev_dependencies]
 luau_check = { name = "jiwonz/luau_check", version = "^0.3.7", target = "lune" }
-multitarget = { name = "jiwonz/multitarget", version = "^0.2.1", target = "lune" }
+multitarget = { name = "jiwonz/multitarget", version = "^0.2.2", target = "lune" }
 darklua = { name = "pesde/darklua", version = "^0.16.0", target = "lune" }
