@@ -1,9 +1,24 @@
-local task = require("../src/lib")
+_G.LUA_ENV = "lune"
 
-task.delay(1, function()
-	print("hello there")
-end)
+local task = require("../")
+
+local function main()
+	task.delay(1, function()
+		print("hi")
+	end)
+
+	print(task.wait(1))
+	print("bruh")
+
+	task.spawn(function()
+		print("ez")
+		task.wait(1)
+		print("no")
+	end)
+end
 
 if task.start then
-	task.start()
+	task.start(main)
+else
+	main()
 end

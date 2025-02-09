@@ -1,20 +1,13 @@
 local types = require("./types")
 
-local task: types.TaskLibrary? = task :: any
-if task then -- when roblox's task built-in library is available
-	return task
-end
+local task: any
 
-if (_VERSION :: string):sub(1, 4) == "Lune" then
-	task = require("@lune/task") :: any
-end
-
-if (_VERSION :: string) == "Luau" then
+if _G.LUA_ENV == "luau" then
 	task = require("./task")
+elseif _G.LUA_ENV == "lune" then
+	task = require("@lune/task")
+elseif _G.LUA_ENV == "roblox" then
+	task = task
 end
 
-if task == nil then
-	error("Failed to get task library.")
-end
-
-return task
+return task :: types.TaskLibrary

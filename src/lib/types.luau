@@ -93,22 +93,23 @@ export type TaskLibrary = {
 
 		### Example Usage
 		```luau
+		-- example of cross-environment script with task lib
+		-- works almost same in roblox, luau, and lune
 		local task = require("./task")
 
-		if not task.start then
-			error("'task.start' is nil. Are you in luau runtime?")
+		local function main()
+			task.wait(1)
+			print("1 second passed")
 		end
 
-		task.start()
-
-		or
-
 		if task.start then
-			task.start()
+			task.start(main)
+		else
+			main()
 		end
 		```
 	]=]
-	start: (() -> never)?,
+	start: (<A..., R...>(asyncMainFunction: ((A...) -> R...)?) -> ())?,
 }
 
 return {}

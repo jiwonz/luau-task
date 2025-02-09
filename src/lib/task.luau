@@ -1,6 +1,11 @@
 -- Licensed under the MIT License, Copyright (c) 2024 jack.ink
 -- Modified by jiwonz
 
+if _G.LUA_ENV ~= "luau" then
+	error("unreachable")
+	return nil :: any
+end
+
 local types = require("./types")
 
 local function resumeWithErrorCheck(thread: thread, ...: any): ()
@@ -91,8 +96,12 @@ function task.cancel(thread)
 	coroutine.close(thread)
 end
 
-function task.start()
-	while true do
+function task.start(asyncMainFunction)
+	if asyncMainFunction then
+		coroutine.resume(coroutine.create(asyncMainFunction))
+	end
+
+	while next(waitingThreads) or next(deferredThreads) do
 		last_tick = os.clock()
 
 		processWaiting()
