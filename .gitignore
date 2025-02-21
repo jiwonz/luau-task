@@ -1,4 +1,4 @@
 lune_packages
 luau_packages
 
-/dist
+/target

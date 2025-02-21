@@ -5,7 +5,6 @@ Get the task library for `Roblox` or `Lune` or `Luau`. Inspired by [seaofvoices/
 via pesde
 ```sh
 pesde add jiwonz/task
-pesde install
 ```
 
 ## Example Usage
