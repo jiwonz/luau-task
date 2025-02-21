@@ -14,9 +14,6 @@ lib = "src/lib/init.luau"
 [indices]
 default = "https://github.com/pesde-pkg/index"
 
-[scripts]
-build = "scripts/build.luau"
-
 [engines]
 lune = "^0.8.9"
 pesde = "^0.6.0-rc.8"
