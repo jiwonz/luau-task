@@ -77,7 +77,7 @@ local task = {}
 
 	Yields the current thread until the next Heartbeat in which the given duration (in seconds) has passed, without throttling.
 ]=]
-function task.wait(duration)
+function task.wait(duration: number?): number
 	-- selene: allow(shadowing)
 	local duration = duration or 0
 
@@ -90,7 +90,7 @@ end
 
 	Schedules a function/coroutine to be called/resumed on the next Heartbeat after the given duration (in seconds) has passed, without throttling.
 ]=]
-function task.delay(duration, functionOrThread, ...)
+function task.delay<A..., R...>(duration: number, functionOrThread: thread | (A...) -> R..., ...: A...): thread
 	local thread = if type(functionOrThread) == "thread" then functionOrThread else coroutine.create(functionOrThread)
 
 	local data: { [any]: any } = table.pack(...)
@@ -123,7 +123,7 @@ end
 
 	Calls/resumes a function/coroutine at the end of the current resumption cycle.
 ]=]
-function task.defer(functionOrThread, ...)
+function task.defer<A..., R...>(functionOrThread: thread | (A...) -> R..., ...: A...): thread
 	local thread = if type(functionOrThread) == "thread" then functionOrThread else coroutine.create(functionOrThread)
 	table.insert(deferredThreads, { thread = thread, args = table.pack(...) })
 
@@ -135,7 +135,7 @@ end
 
 	Calls/resumes a function/coroutine immediately through the engine scheduler.
 ]=]
-function task.spawn(functionOrThread, ...)
+function task.spawn<A..., R...>(functionOrThread: thread | (A...) -> R..., ...: A...): thread
 	local thread = if type(functionOrThread) == "thread" then functionOrThread else coroutine.create(functionOrThread)
 	resumeWithErrorCheck(thread, ...)
 
@@ -147,7 +147,7 @@ end
 
 	Cancels a thread, preventing it from being resumed.
 ]=]
-function task.cancel(thread)
+function task.cancel(thread: thread)
 	coroutine.close(thread)
 end
 
@@ -177,7 +177,7 @@ end
 	end
 	```
 ]=]
-function task.start(asyncMainFunction)
+function task.start<A..., R...>(asyncMainFunction: ((A...) -> R...)?)
 	if asyncMainFunction then
 		coroutine.resume(coroutine.create(asyncMainFunction))
 	end
