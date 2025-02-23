@@ -171,7 +171,7 @@ selene = [{ name = "pesde/selene", version = "^0.27.1", index = "https://github.
 stylua = [{ name = "pesde/stylua", version = "^2.0.2", index = "https://github.com/daimond113/pesde-index", target = "lune" }, "dev"]
 
 [graph."jiwonz/multitarget@0.4.0-rc.27 lune"]
-direct = ["multitarget", { name = "jiwonz/multitarget", version = "^0.4.0-rc.26", index = "default" }, "dev"]
+direct = ["multitarget", { name = "jiwonz/multitarget", version = "^0.4.0-rc.27", index = "default" }, "dev"]
 resolved_ty = "dev"
 
 [graph."jiwonz/multitarget@0.4.0-rc.27 lune".dependencies]
